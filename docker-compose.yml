@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  api:
+    build: ./apps/api
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - qdrant
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+  web:
+    build: ./apps/web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
