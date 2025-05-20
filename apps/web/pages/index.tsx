@@ -1,25 +1,31 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 export default function Home() {
-  const [question, setQuestion] = useState('')
-  const [answer, setAnswer] = useState('')
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
 
   const ask = async () => {
-    const res = await fetch("http://localhost:8000/ask", {
+    const res = await fetch("process.env.NEXT_PUBLIC_API_URL", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question }),
-    })
-    const data = await res.json()
-    setAnswer(data.answer)
-  }
+    });
+    const data = await res.json();
+    setAnswer(data.answer);
+  };
 
   return (
-    <div>
-      <h1>RAG Chatbot</h1>
-      <input value={question} onChange={e => setQuestion(e.target.value)} />
-      <button onClick={ask}>Ask</button>
-      <p>{answer}</p>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-2xl font-bold">RAG Bot</h1>
+      <input
+        className="border-2 border-gray-300 rounded-md p-2"
+        value={question}
+        onChange={(e) => setQuestion(e.target.value)}
+      />
+      <button className="bg-blue-500 text-white p-2 rounded-md" onClick={ask}>
+        Ask
+      </button>
+      <p className="text-lg">{answer}</p>
     </div>
-  )
+  );
 }
