@@ -1,0 +1,7 @@
+fastapi
+pydantic
+uvicorn
+langchain
+openai
+qdrant-client
+dotenv-derive
