@@ -5,3 +5,5 @@ langchain
 openai
 qdrant-client
 dotenv-derive
+langchain-community
+langchain-openai

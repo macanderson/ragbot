@@ -3,25 +3,7 @@
   "builds": [
     {
       "src": "apps/api/main.py",
-      "use": "@vercel/python",
-      "config": {
-        "requirements": [
-          "fastapi",
-          "pydantic",
-          "uvicorn",
-          "langchain",
-          "qdrant-client",
-          "openai",
-          "dotenv-derive"
-        ],
-        "env": {
-          "OPENAI_API_KEY": "${OPENAI_API_KEY}",
-          "QDRANT_API_KEY": "${QDRANT_API_KEY}",
-          "QDRANT_URL": "${QDRANT_URL}",
-          "QDRANT_PORT": "${QDRANT_PORT}",
-          "QDRANT_COLLECTION": "${RAG_COLLECTION}"
-        }
-      }
+      "use": "@vercel/python"
     },
     {
       "src": "apps/web/package.json",
